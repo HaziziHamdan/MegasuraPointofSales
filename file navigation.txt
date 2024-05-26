@@ -1,0 +1,4 @@
+POS Directory
+
+
+resources -> views -> layouts = footer, header, sidebar

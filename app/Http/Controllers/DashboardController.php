@@ -9,6 +9,7 @@ use App\Models\Pengeluaran;
 use App\Models\Penjualan;
 use App\Models\Produk;
 use App\Models\Supplier;
+use App\Models\Sessions;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,8 +19,16 @@ class DashboardController extends Controller
         $kategori = Kategori::count();
         $produk = Produk::count();
         $supplier = Supplier::count();
-        $member = Member::count();
-        $penjualan = Penjualan::sum('diterima');
+        $staff2 = Member::count();
+
+        $staff = Sessions::leftJoin('users','users.id','sessions.user_id')
+        ->select('users.name')
+        ->where('sessions.user_id', '!=', 1)
+        ->first('');
+
+        $staff = $staff ? $staff->name: "None";
+
+        $penjualan = Penjualan::sum('bayar');
         $pengeluaran = Pengeluaran::sum('nominal');
         $pembelian = Pembelian::sum('bayar');
 
@@ -30,14 +39,24 @@ class DashboardController extends Controller
         $data_pendapatan = array();
 
         while (strtotime($tanggal_awal) <= strtotime($tanggal_akhir)) {
+            //decrement
             $data_tanggal[] = (int) substr($tanggal_awal, 8, 2);
 
+            //income calc
             $total_penjualan = Penjualan::where('created_at', 'LIKE', "%$tanggal_awal%")->sum('bayar');
             $total_pembelian = Pembelian::where('created_at', 'LIKE', "%$tanggal_awal%")->sum('bayar');
             $total_pengeluaran = Pengeluaran::where('created_at', 'LIKE', "%$tanggal_awal%")->sum('nominal');
 
             $pendapatan = $total_penjualan - $total_pembelian - $total_pengeluaran;
             $data_pendapatan[] += $pendapatan;
+            
+            //profit calc
+
+            // $total_dapatan = 
+            // $total_berian = 
+
+            // $pendapatan = $total_penjualan - $total_pembelian - $total_pengeluaran;
+            // $data_pendapatan[] += $pendapatan;
 
             $tanggal_awal = date('Y-m-d', strtotime("+1 day", strtotime($tanggal_awal)));
         }
@@ -45,7 +64,7 @@ class DashboardController extends Controller
         $tanggal_awal = date('Y-m-01');
 
         if (auth()->user()->level == 1) {
-            return view('admin.dashboard', compact('kategori', 'produk', 'supplier', 'member', 'penjualan', 'pengeluaran', 'pembelian', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
+            return view('admin.dashboard', compact('kategori', 'produk', 'supplier', 'staff', 'penjualan', 'pengeluaran', 'pembelian', 'tanggal_awal', 'tanggal_akhir', 'data_tanggal', 'data_pendapatan'));
         } else {
             return view('kasir.dashboard');
         }

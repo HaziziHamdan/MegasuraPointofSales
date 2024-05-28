@@ -37,6 +37,7 @@
                             <th>Selling Price</th>
                             <th>Discount</th>
                             <th>Stock</th>
+                            <th>Minimum Stock</th>
                             <th width="15%"><i class="fa fa-cog"></i></th>
                         </thead>
                     </table>
@@ -73,6 +74,7 @@
                 {data: 'harga_jual'},
                 {data: 'diskon'},
                 {data: 'stok'},
+                {data: 'min_stok'},
                 {data: 'aksi', searchable: false, sortable: false},
             ]
         });
@@ -124,6 +126,7 @@
                 $('#modal-form [name=harga_jual]').val(response.harga_jual);
                 $('#modal-form [name=diskon]').val(response.diskon);
                 $('#modal-form [name=stok]').val(response.stok);
+                $('#modal-form [name=min_stok]').val(response.min_stok);
             })
             .fail((errors) => {
                 alert('Unable to display data');
@@ -169,10 +172,12 @@
         if ($('input:checked').length < 1) {
             alert('Select the data to print');
             return;
-        } else if ($('input:checked').length < 3) {
-            alert('Select at least 3 data to print');
-            return;
-        } else {
+        } 
+        // else if ($('input:checked').length < 3) {
+        //     alert('Select at least 3 data to print');
+        //     return;
+        // } 
+        else {
             $('.form-produk')
                 .attr('target', '_blank')
                 .attr('action', url)

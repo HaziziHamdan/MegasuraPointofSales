@@ -46,14 +46,14 @@
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
-                <h3>{{ $member }}</h3>
+                <h3>{{ $staff }}</h3>
 
-                <p>Total Member</p>
+                <p>Active Staff</p>
             </div>
             <div class="icon">
                 <i class="fa fa-id-card"></i>
             </div>
-            <a href="{{ route('member.index') }}" class="small-box-footer">View <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{ route('user.index') }}" class="small-box-footer"> <i class="fa fa-arrow-circle-right"></i></a>
         </div>
     </div>
     <!-- ./col -->
@@ -80,7 +80,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>{{ $penjualan }}</h3>
+                <h3>RM{{ $penjualan }}</h3>
 
                 <p>Sales</p>
             </div>
@@ -96,7 +96,7 @@
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
-                <h3>{{ $pengeluaran }}</h3>
+                <h3>RM{{ $pengeluaran }}</h3>
 
                 <p>Total Expenses</p>
             </div>
@@ -111,7 +111,7 @@
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>{{ $pembelian }}</h3>
+                <h3>RM{{ $pembelian }}</h3>
 
                 <p>Total Purchase</p>
             </div>

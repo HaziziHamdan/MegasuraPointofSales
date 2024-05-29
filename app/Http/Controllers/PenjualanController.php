@@ -111,18 +111,18 @@ class PenjualanController extends Controller
                 return $detail->produk->nama_produk;
             })
             ->addColumn('harga_jual', function ($detail) {
-                return '$ '. format_uang($detail->harga_jual);
+                return 'RM'. format_uang($detail->harga_jual);
             })
             ->addColumn('jumlah', function ($detail) {
-                return format_uang($detail->jumlah);
+                return $detail->jumlah;
             })
             ->addColumn('subtotal', function ($detail) {
-                return '$ '. format_uang($detail->subtotal);
+                return 'RM'. format_uang($detail->subtotal);
             })
             ->rawColumns(['kode_produk'])
             ->make(true);
     }
-    // visit "codeastro" for more projects!
+
     public function destroy($id)
     {
         $penjualan = Penjualan::find($id);
@@ -179,4 +179,3 @@ class PenjualanController extends Controller
         return $pdf->stream('Transaction-'. date('Y-m-d-his') .'.pdf');
     }
 }
-// visit "codeastro" for more projects!

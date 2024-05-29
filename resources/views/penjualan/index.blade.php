@@ -13,6 +13,10 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="box">
+            <div class="box-header with-border">
+                <button onclick="calcTax()" class="btn btn-primary btn-flat"><i class="fa fa-calculator"></i> Calculate Tax</button>
+            </div>
+        <div class="box">
             <div class="box-body table-responsive">
                 <table class="table table-stiped table-bordered table-penjualan table-hover">
                     <thead>
@@ -31,7 +35,7 @@
         </div>
     </div>
 </div>
-<!-- visit "codeastro" for more projects! -->
+
 @includeIf('penjualan.detail')
 @endsection
 
@@ -97,6 +101,10 @@
                     return;
                 });
         }
+    }
+
+    function calcTax(){
+        $('#modal-form').modal('show');
     }
 </script>
 @endpush

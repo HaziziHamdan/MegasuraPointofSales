@@ -19,7 +19,7 @@ Income Report {{ malaysian_time($tanggalAwal, false) }} -- {{ malaysian_time($ta
         <div class="box">
             <div class="box-header with-border">
                 <button onclick="updatePeriode()" class="btn btn-primary btn-flat"><i class="fa fa-plus-circle"></i> Change Date</button>
-                <!-- <a href="{{ route('laporan.export_pdf', [$tanggalAwal, $tanggalAkhir]) }}" target="_blank" class="btn btn-success btn-flat"><i class="fa fa-file-excel-o"></i> Export PDF</a> -->
+                <a href="{{ route('laporan.export_pdf', [$tanggalAwal, $tanggalAkhir]) }}" target="_blank" class="btn btn-success btn-flat"><i class="fa fa-file-excel-o"></i> Export PDF</a>
             </div>
             <div class="box-body table-responsive">
                 <table class="table table-stiped table-bordered table-hover">
@@ -36,7 +36,6 @@ Income Report {{ malaysian_time($tanggalAwal, false) }} -- {{ malaysian_time($ta
         </div>
     </div>
 </div>
-<!-- visit "codeastro" for more projects! -->
 @includeIf('laporan.form')
 @endsection
 

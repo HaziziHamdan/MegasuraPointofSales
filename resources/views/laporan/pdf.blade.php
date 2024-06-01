@@ -12,7 +12,7 @@
     <h3 class="text-center">Income Report</h3>
     <h4 class="text-center">
         Date {{ malaysian_time($awal, false) }}
-        s/d
+        -
         Date {{ malaysian_time($akhir, false) }}
     </h4>
 

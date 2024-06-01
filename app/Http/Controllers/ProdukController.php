@@ -6,6 +6,7 @@ use App\Models\Kategori;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use PDF;
+use Psy\Readline\Hoa\Console;
 
 class ProdukController extends Controller
 {
@@ -40,10 +41,10 @@ class ProdukController extends Controller
                 return '<span class="label label-success">'. $produk->kode_produk .'</span>';
             })
             ->addColumn('harga_beli', function ($produk) {
-                return format_uang($produk->harga_beli);
+                return 'RM '. format_uang($produk->harga_beli);
             })
             ->addColumn('harga_jual', function ($produk) {
-                return format_uang($produk->harga_jual);
+                return 'RM '. format_uang($produk->harga_jual);
             })
             ->addColumn('stok', function ($produk) {
                 return $produk->stok;
@@ -78,10 +79,18 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
-        $produk = Produk::latest()->first() ?? new Produk();
-        $request['kode_produk'] = 'P'. tambah_nol_didepan((int)$produk->id_produk +1, 6);
-
+        if ($request->has('barcode_produk') && $request->barcode_produk != "") {
+            $request->merge(['kode_produk' => $request->barcode_produk]);
+        } else {
+            $produk = Produk::latest()->first() ?? new Produk();
+            $request->merge(['kode_produk' => 'P' . tambah_nol_didepan((int)$produk->id_produk + 1, 6)]);
+        }
+    
         $produk = Produk::create($request->all());
+        // $produk = Produk::latest()->first() ?? new Produk();
+        // $request['kode_produk'] = 'P'. tambah_nol_didepan((int)$produk->id_produk +1, 6);
+
+        // $produk = Produk::create($request->all());
 
         return response()->json('Data saved successfully', 200);
     }
@@ -148,7 +157,7 @@ class ProdukController extends Controller
 
         return response(null, 204);
     }
-    // visit "codeastro" for more projects!
+
     public function cetakBarcode(Request $request)
     {
         $dataproduk = array();

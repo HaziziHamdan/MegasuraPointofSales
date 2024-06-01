@@ -23,7 +23,7 @@ class PengeluaranController extends Controller
                 return malaysian_time($pengeluaran->created_at, false);
             })
             ->addColumn('nominal', function ($pengeluaran) {
-                return format_uang($pengeluaran->nominal);
+                return 'RM '. format_uang($pengeluaran->nominal);
             })
             ->addColumn('aksi', function ($pengeluaran) {
                 return '

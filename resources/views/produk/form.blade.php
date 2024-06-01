@@ -11,6 +11,13 @@
                     <h4 class="modal-title"></h4>
                 </div>
                 <div class="modal-body">
+                    <!-- <div class="form-group row">
+                        <label for="barcode_produk" class="col-lg-2 col-lg-offset-1 control-label">Code</label>
+                        <div class="col-lg-6">
+                            <input type="text" name="barcode_produk" id="barcode_produk" class="form-control" autofocus>
+                            <span class="help-block with-errors"></span>
+                        </div>
+                    </div> -->
                     <div class="form-group row">
                         <label for="nama_produk" class="col-lg-2 col-lg-offset-1 control-label">Name</label>
                         <div class="col-lg-6">

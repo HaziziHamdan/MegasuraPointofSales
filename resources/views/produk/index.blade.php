@@ -106,6 +106,7 @@
         $('#modal-form form').attr('action', url);
         $('#modal-form [name=_method]').val('post');
         $('#modal-form [name=nama_produk]').focus();
+        $('#modal-form [name=barcode_produk]').removeAttr('disabled');
     }
 
     function editForm(url) {
@@ -116,9 +117,11 @@
         $('#modal-form form').attr('action', url);
         $('#modal-form [name=_method]').val('put');
         $('#modal-form [name=nama_produk]').focus();
+        // $('#modal-form [name=barcode_produk]').attr('disabled','disabled');
 
         $.get(url)
             .done((response) => {
+                $('#modal-form [name=barcode_produk]').val(response.kode_produk);
                 $('#modal-form [name=nama_produk]').val(response.nama_produk);
                 $('#modal-form [name=id_kategori]').val(response.id_kategori);
                 $('#modal-form [name=merk]').val(response.merk);
@@ -152,7 +155,7 @@
 
     function deleteSelected(url) {
         if ($('input:checked').length > 1) {
-            if (confirm('Yakin ingin menghapus data terpilih?')) {
+            if (confirm('Are you sure you want to delete the selected data?')) {
                 $.post(url, $('.form-produk').serialize())
                     .done((response) => {
                         table.ajax.reload();

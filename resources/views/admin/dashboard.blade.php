@@ -155,7 +155,7 @@
     <div class="col-lg-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Profit Chart {{ malaysian_time($tanggal_awal, false) }} - {{ malaysian_time($tanggal_akhir, false) }}</h3>
+                <h3 class="box-title">Sales of <strong> Beras 10 KG</strong> {{ malaysian_time($tanggal_awal, false) }} - {{ malaysian_time($tanggal_akhir, false) }}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

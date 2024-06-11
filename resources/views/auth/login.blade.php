@@ -46,7 +46,7 @@
                 <!-- /.col -->
             </div>
         </form>
-    </div><!-- visit "codeastro" for more projects! -->
+    </div>
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->

@@ -12,6 +12,8 @@ use App\Models\Supplier;
 use App\Models\Sessions;
 use Illuminate\Http\Request;
 
+use App\Models\PenjualanDetail;
+
 class DashboardController extends Controller
 {
     public function index()
@@ -52,11 +54,20 @@ class DashboardController extends Controller
             
             //profit calc
 
-            // $total_dapatan = 
-            // $total_berian = 
+            $tanggal_awal = date('Y-m-d', strtotime("+1 day", strtotime($tanggal_awal)));
+        }
 
-            // $pendapatan = $total_penjualan - $total_pembelian - $total_pengeluaran;
-            // $data_pendapatan[] += $pendapatan;
+        while (strtotime($tanggal_awal) <= strtotime($tanggal_akhir)) {
+            //decrement
+            $data_tanggal[] = (int) substr($tanggal_awal, 8, 2);
+
+            //income calc
+            $total_penjualan = PenjualanDetail::where('created_at', 'LIKE', "%$tanggal_awal%", 'AND', 'id_produk', 'EQUAL', '"%$id_produk%"')->sum('bayar');
+
+            $pendapatan = $total_penjualan;
+            $data_pendapatan[] += $pendapatan;
+            
+            //profit calc
 
             $tanggal_awal = date('Y-m-d', strtotime("+1 day", strtotime($tanggal_awal)));
         }

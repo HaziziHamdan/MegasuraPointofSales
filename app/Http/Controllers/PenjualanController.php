@@ -56,7 +56,7 @@ class PenjualanController extends Controller
             ->rawColumns(['aksi', 'kode_member'])
             ->make(true);
     }
-    // visit "codeastro" for more projects!
+    
     public function create()
     {
         $penjualan = new Penjualan();

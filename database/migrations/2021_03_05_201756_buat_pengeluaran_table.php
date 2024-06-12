@@ -16,7 +16,7 @@ class BuatPengeluaranTable extends Migration
         Schema::create('pengeluaran', function (Blueprint $table) {
             $table->increments('id_pengeluaran');
             $table->text('deskripsi');
-            $table->integer('nominal');
+            $table->float('nominal');
             $table->timestamps();
         });
     }

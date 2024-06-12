@@ -17,10 +17,10 @@ class BuatPenjualanDetailTable extends Migration
             $table->increments('id_penjualan_detail');
             $table->integer('id_penjualan');
             $table->integer('id_produk');
-            $table->integer('harga_jual');
-            $table->integer('jumlah');
+            $table->float('harga_jual');
+            $table->float('jumlah');
             $table->tinyInteger('diskon')->default(0);
-            $table->integer('subtotal');
+            $table->float('subtotal');
             $table->timestamps();
         });
     }

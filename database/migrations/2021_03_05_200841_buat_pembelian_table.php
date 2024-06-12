@@ -17,9 +17,9 @@ class BuatPembelianTable extends Migration
             $table->increments('id_pembelian');
             $table->integer('id_supplier');
             $table->integer('total_item');
-            $table->integer('total_harga');
+            $table->float('total_harga');
             $table->tinyInteger('diskon')->default(0);
-            $table->integer('bayar')->default(0);
+            $table->float('bayar')->default(0);
             $table->timestamps();
         });
     }

@@ -29,10 +29,10 @@ class DashboardController extends Controller
         ->first('');
 
         $staff = $staff ? $staff->name: "None";
-
-        $penjualan = Penjualan::sum('bayar');
-        $pengeluaran = Pengeluaran::sum('nominal');
-        $pembelian = Pembelian::sum('bayar');
+        
+        $penjualan = format_uang(Penjualan::sum('bayar'));
+        $pengeluaran = format_uang(Pengeluaran::sum('nominal'));
+        $pembelian = format_uang(Pembelian::sum('bayar'));
 
         $tanggal_awal = date('Y-m-01');
         $tanggal_akhir = date('Y-m-d');

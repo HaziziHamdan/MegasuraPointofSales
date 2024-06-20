@@ -98,5 +98,5 @@
             @endforeach
         </table>
     </section>
-</body><!-- visit "codeastro" for more projects! -->
+</body>
 </html>

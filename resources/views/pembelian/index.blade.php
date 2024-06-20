@@ -36,7 +36,7 @@
         </div>
     </div>
 </div>
-<!-- visit "codeastro" for more projects! -->
+
 @includeIf('pembelian.supplier')
 @includeIf('pembelian.detail')
 @endsection

@@ -16,7 +16,7 @@ class PembelianController extends Controller
 
         return view('pembelian.index', compact('supplier'));
     }
-    // visit "codeastro" for more projects!
+    
     public function data()
     {
         $pembelian = Pembelian::orderBy('id_pembelian', 'desc')->get();

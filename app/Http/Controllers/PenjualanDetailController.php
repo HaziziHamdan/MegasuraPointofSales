@@ -95,7 +95,7 @@ class PenjualanDetailController extends Controller
 
         return response()->json('Data saved successfully', 200);
     }
-    // visit "codeastro" for more projects!
+
     public function update(Request $request, $id)
     {
         $detail = PenjualanDetail::find($id);
@@ -128,4 +128,3 @@ class PenjualanDetailController extends Controller
         return response()->json($data);
     }
 }
-// visit "codeastro" for more projects!

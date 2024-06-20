@@ -28,7 +28,7 @@
         </div>
     </div>
 </div>
-<!-- visit "codeastro" for more projects! -->
+
 
 @includeIf('kategori.form')
 @endsection

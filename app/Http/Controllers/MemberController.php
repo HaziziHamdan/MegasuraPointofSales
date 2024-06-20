@@ -114,7 +114,7 @@ class MemberController extends Controller
 
         return response()->json('Data saved successfully', 200);
     }
-    // visit "codeastro" for more projects!
+    
     /**
      * Remove the specified resource from storage.
      *

@@ -30,7 +30,7 @@
         </div>
     </div>
 </div>
-<!-- visit "codeastro" for more projects! -->
+
 @includeIf('pengeluaran.form')
 @endsection
 

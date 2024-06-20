@@ -35,7 +35,7 @@
 
     @stack('css')
 </head>
-<!-- visit "codeastro" for more projects! -->
+
 <body class="hold-transition skin-green sidebar-mini">
     <div class="wrapper">
 

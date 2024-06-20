@@ -29,6 +29,7 @@ class LaporanController extends Controller
         $data = array();
         $pendapatan = 0;
         $total_pendapatan = 0;
+        $penjualan = 0;
 
         while (strtotime($awal) <= strtotime($akhir)) {
             $tanggal = $awal;
@@ -41,6 +42,8 @@ class LaporanController extends Controller
             $pendapatan = $total_penjualan - $total_pembelian - $total_pengeluaran;
             $total_pendapatan += $pendapatan;
 
+            $penjualan += $total_penjualan;
+
             $row = array();
             $row['DT_RowIndex'] = $no++;
             $row['tanggal'] = malaysian_time($tanggal, false);
@@ -51,15 +54,28 @@ class LaporanController extends Controller
 
             $data[] = $row;
         }
-        // visit "codeastro" for more projects!
+
+        
+        
         $data[] = [
             'DT_RowIndex' => '',
-            'tanggal' => '',
-            'penjualan' => '',
+            'tanggal' => 'Total Sale',
+            'penjualan' => format_uang($penjualan),
             'pembelian' => '',
             'pengeluaran' => 'Total Income',
-            'pendapatan' => format_uang($total_pendapatan),
+            'pendapatan' => format_uang($total_pendapatan)
         ];
+
+        $data[] = [
+            'DT_RowIndex' => '',
+            'tanggal' => 'Sale Tax 5%',
+            'penjualan' => format_uang($penjualan*0.05),
+            'pembelian' => '',
+            'pengeluaran' => '',
+            'pendapatan' => ''
+        ];
+
+    
 
         return $data;
     }

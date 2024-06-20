@@ -38,7 +38,7 @@ List of Members
         </div>
     </div>
 </div>
-<!-- visit "codeastro" for more projects! -->
+
 @includeIf('member.form')
 @endsection
 

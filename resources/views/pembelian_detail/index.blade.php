@@ -129,7 +129,7 @@ Purchase
         </div>
     </div>
 </div>
-<!-- visit "codeastro" for more projects! -->
+
 @includeIf('pembelian_detail.produk')
 @endsection
 

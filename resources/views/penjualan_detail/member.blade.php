@@ -37,4 +37,3 @@
         </div>
     </div>
 </div>
-<!-- visit "codeastro" for more projects! -->

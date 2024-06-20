@@ -59,12 +59,24 @@ Income Report {{ malaysian_time($tanggalAwal, false) }} -- {{ malaysian_time($ta
                 {data: 'penjualan'},
                 {data: 'pembelian'},
                 {data: 'pengeluaran'},
-                {data: 'pendapatan'}
+                {data: 'pendapatan'},
+                // {data: 'cukai'}
+                // {data: 'totalcukai'}
             ],
             dom: 'Brt',
             bSort: false,
             bPaginate: false,
         });
+        // table.row
+        //     .add({
+        //         '',
+        //         '',
+        //         '',
+        //         '',
+        //         '',
+        //         ''
+        //     })
+        //     .draw();
 
         $('.datepicker').datepicker({
             format: 'yyyy-mm-dd',

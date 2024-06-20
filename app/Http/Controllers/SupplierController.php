@@ -77,7 +77,7 @@ class SupplierController extends Controller
     {
         //
     }
-    // visit "codeastro" for more projects!
+
     /**
      * Update the specified resource in storage.
      *
@@ -105,4 +105,3 @@ class SupplierController extends Controller
         return response(null, 204);
     }
 }
-// visit "codeastro" for more projects!

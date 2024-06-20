@@ -83,7 +83,7 @@ class PengeluaranController extends Controller
     {
         //
     }
-    // visit "codeastro" for more projects!
+    
     /**
      * Update the specified resource in storage.
      *

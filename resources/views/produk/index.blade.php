@@ -47,12 +47,39 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3>Out of Stock</h3>
+            </div>
+            <div class="box-body table-responsive">
+                <form action="" method="post" class="form-produk">
+                    @csrf
+                    <table class="minstok table-stiped table-bordered table-hover">
+                        <thead>
+                            <th width="5%">#</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Brand</th>
+                            <th>Stock</th>
+                            <th>Minimum Stock</th>
+                        </thead>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @includeIf('produk.form')
 @endsection
 
 @push('scripts')
 <script>
-    let table;
+    let table, minstok;
 
     $(function () {
         table = $('.table').DataTable({
@@ -76,6 +103,25 @@
                 {data: 'stok'},
                 {data: 'min_stok'},
                 {data: 'aksi', searchable: false, sortable: false},
+            ]
+        });
+
+        minstok = $('.minstok').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            autoWidth: false,
+            ajax: {
+                url: '{{ route('produk.getstok') }}',
+            },
+            columns: [
+                {data: 'DT_RowIndex', searchable: false, sortable: false},
+                {data: 'kode_produk'},
+                {data: 'nama_produk'},
+                {data: 'nama_kategori'},
+                {data: 'merk'},
+                {data: 'stok'},
+                {data: 'min_stok'},
             ]
         });
 

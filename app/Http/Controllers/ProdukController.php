@@ -61,6 +61,42 @@ class ProdukController extends Controller
             ->make(true);
     }
 
+    public function getstok()
+    {
+        $produk = Produk::leftJoin('kategori', 'kategori.id_kategori', 'produk.id_kategori')
+            ->select('produk.*', 'nama_kategori')
+            ->where('min_stok','>','stok')
+            // ->orderBy('kode_produk', 'asc')
+            ->whereColumn('produk.min_stok', '>', 'produk.stok')
+            ->get();
+
+        return datatables()
+            ->of($produk)
+            ->addIndexColumn()
+            ->addColumn('select_all', function ($produk) {
+                return '
+                    <input type="checkbox" name="id_produk[]" value="'. $produk->id_produk .'">
+                ';
+            })
+            ->addColumn('kode_produk', function ($produk) {
+                return '<span class="label label-success">'. $produk->kode_produk .'</span>';
+            })
+            ->addColumn('stok', function ($produk) {
+                return $produk->stok;
+            })
+            ->addColumn('aksi', function ($produk) {
+                return '
+                <div class="btn-group">
+                    <button type="button" onclick="editForm(`'. route('produk.update', $produk->id_produk) .'`)" class="btn btn-xs btn-primary btn-flat"><i class="fa fa-pencil"></i></button>
+                    <button type="button" onclick="deleteData(`'. route('produk.destroy', $produk->id_produk) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
+                </div>
+                ';
+            })
+            ->rawColumns(['aksi', 'kode_produk', 'select_all'])
+            ->make(true);
+    }
+    
+
     /**
      * Show the form for creating a new resource.
      *

@@ -68,8 +68,8 @@ class LaporanController extends Controller
 
         $data[] = [
             'DT_RowIndex' => '',
-            'tanggal' => 'Sale Tax 5%',
-            'penjualan' => format_uang($penjualan*0.05),
+            'tanggal' => 'Sale Tax 8%',
+            'penjualan' => format_uang($penjualan*0.08),
             'pembelian' => '',
             'pengeluaran' => '',
             'pendapatan' => ''
